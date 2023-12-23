@@ -13,8 +13,8 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    sh "docker compose down"
-                    sh "docker compose up --build -d"
+                    sh "sudo docker compose down"
+                    sh "sudo docker compose up --build -d"
                 }
             }
         }
