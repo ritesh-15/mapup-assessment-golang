@@ -2,14 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage("Test") {
-            steps {
-                script {
-                    echo "hello this is first stage"
-                }
-            }
-        }
-
         stage('Checkout') {
             steps {
                 script {
@@ -21,8 +13,8 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    docker compose up --build -d
-                    echo "App is now running..."
+                    sh "docker compose down"
+                    sh "docker compose up --build -d"
                 }
             }
         }
