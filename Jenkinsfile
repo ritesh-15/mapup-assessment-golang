@@ -4,19 +4,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checking out code'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building docker image'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ritesh-15/mapup-assessment-golang']])
             }
         }
 
         stage('Run') {
             steps {
-                echo 'Running docker image'
+                script {
+                    docker compose up --build -d
+                }
             }
         }
     }
