@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     docker compose up --build -d
-                    echo "App is now running"
+                    echo "App is now running..."
                 }
             }
         }
